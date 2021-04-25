@@ -230,12 +230,12 @@ void add_box( struct matrix * edges,
               double width, double height, double depth )
 {
     add_edge(edges, x, y, z, x + width, y, z); 
-    add_edge(edges, x + width, y, z, + width, y - height, z); 
+    add_edge(edges, x + width, y, z, x + width, y - height, z); 
     add_edge(edges, x + width, y - height, z, x, y - height, z); 
     add_edge(edges, x, y - height, z, x, y, z);
 
     add_edge(edges, x, y, z - depth, x + width, y, z - depth); 
-    add_edge(edges, x + width, y, z - depth, + width, y - height, z - depth); 
+    add_edge(edges, x + width, y, z - depth, x + width, y - height, z - depth); 
     add_edge(edges, x + width, y - height, z - depth, x, y - height, z - depth); 
     add_edge(edges, x, y - height, z - depth, x, y, z - depth);
 
@@ -286,7 +286,7 @@ void add_torus( struct matrix * edges,
         for(double j = 0; j <= steps; ++j)
         {
             theta = 2 * M_PI * ((double) j / steps);
-            x = cos(phi) * (r1 * cos(theta) + r1) + cx;
+            x = cos(phi) * (r1 * cos(theta) + r2) + cx;
             y = r1 * sin(theta) + cy;
             z = -sin(phi) * (r1 * cos(theta) + r2) + cz;
             add_edge(edges, x, y, z, x, y, z);
